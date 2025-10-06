@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 13% 9%;
+    --foreground: 210 20% 90%;
+    --card: 220 13% 9%;
+    --card-foreground: 210 20% 90%;
+    --popover: 220 13% 9%;
+    --popover-foreground: 210 20% 90%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 210 20% 98%;
+    --secondary: 178 64% 35%;
+    --secondary-foreground: 210 20% 98%;
+    --muted: 220 10% 15%;
+    --muted-foreground: 220 5% 60%;
+    --accent: 262 55% 55%;
+    --accent-foreground: 210 20% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 220 10% 15%;
+    --input: 220 10% 15%;
+    --ring: 217 91% 60%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-surface text-surface-on-surface font-body;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+  
+  /* Glass morphism effect */
+  .glass {
+    @apply backdrop-blur-lg bg-white/5 border border-white/10;
+  }
+  
+  /* Gradient backgrounds */
+  .gradient-brand {
+    background: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
+  }
+  
+  .gradient-surface {
+    background: linear-gradient(135deg, #0E1726 0%, #0F172A 50%, #111827 100%);
+  }
+  
+  /* Focus styles */
+  .focus-visible {
+    @apply outline-none ring-2 ring-states-focus ring-offset-2 ring-offset-surface;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-surface-alt;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-ink-500 rounded-pill;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-ink-300;
+  }
+  
+  /* Typography scale utility classes */
+  .text-display-2 {
+    font-size: 72px;
+    line-height: 1.0;
+    font-weight: 700;
+  }
+  
+  .text-display-1 {
+    font-size: 60px;
+    line-height: 1.05;
+    font-weight: 700;
+  }
+  
+  .text-h1 {
+    font-size: 48px;
+    line-height: 1.1;
+    font-weight: 700;
+  }
+  
+  .text-h2 {
+    font-size: 40px;
+    line-height: 1.15;
+    font-weight: 700;
+  }
+  
+  .text-h3 {
+    font-size: 32px;
+    line-height: 1.2;
+    font-weight: 600;
+  }
+  
+  .text-h4 {
+    font-size: 24px;
+    line-height: 1.25;
+    font-weight: 600;
+  }
+  
+  .text-body-xl {
+    font-size: 20px;
+    line-height: 1.5;
+    font-weight: 400;
+  }
+  
+  .text-body-l {
+    font-size: 18px;
+    line-height: 1.55;
+    font-weight: 400;
+  }
+  
+  .text-body-m {
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: 400;
+  }
+  
+  .text-body-s {
+    font-size: 14px;
+    line-height: 1.55;
+    font-weight: 400;
+  }
+  
+  .text-caption {
+    font-size: 12px;
+    line-height: 1.4;
+    font-weight: 400;
+  }
+}
+
+@layer components {
+  /* Button variants */
+  .btn-primary {
+    @apply bg-brand-primary hover:bg-brand-primary-700 text-white px-6 py-3 rounded-lg font-medium transition-all duration-base shadow-soft hover:shadow-elevated focus-visible;
+  }
+  
+  .btn-secondary {
+    @apply bg-transparent border border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white px-6 py-3 rounded-lg font-medium transition-all duration-base focus-visible;
+    white-space: nowrap !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  .btn-ghost {
+    @apply bg-transparent hover:bg-white/5 text-surface-on-surface px-6 py-3 rounded-lg font-medium transition-all duration-base focus-visible;
+  }
+  
+  /* Segmento cards styling - Classes removidas para restaurar visual original */
+
+  /* Form styles */
+  .form-field {
+    @apply bg-surface-elevated border border-ink-700 rounded-lg px-4 py-3 text-surface-on-surface placeholder:text-ink-500 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition-colors duration-base;
+  }
+  
+  .form-label {
+    @apply text-body-s font-medium text-surface-on-surface mb-2 block;
+  }
+  
+  .form-error {
+    @apply text-body-s text-semantic-danger mt-1 block;
+  }
+  
+  /* Card styles */
+  .card {
+    @apply bg-surface-elevated border border-ink-700 rounded-lg p-6 shadow-soft;
+  }
+  
+  .card-glass {
+    @apply glass rounded-lg p-6 shadow-soft;
+  }
+}
+
+@layer utilities {
+  /* Text utilities */
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
+  }
+  
+  /* Animation utilities */
+  .animate-in {
+    animation: fade-in-up 0.5s ease-out;
+  }
+  
+  /* Responsive utilities */
+  .container-custom {
+    @apply mx-auto px-6;
+    max-width: min(100%, 1408px);
+  }
+  
+  @screen md {
+    .container-custom {
+      max-width: min(100%, 976px);
+    }
+  }
+  
+  @screen lg {
+    .container-custom {
+      max-width: min(100%, 1216px);
+    }
+  }
+  
+  @screen xl {
+    .container-custom {
+      max-width: min(100%, 1408px);
+    }
+  }
+}
+
+img {
+  object-position: top;
+}
+
+.fixed {
+  position: fixed;
+}
